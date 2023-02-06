@@ -16,10 +16,12 @@ public class GravtyController : MonoBehaviour
     Vector3 vector = new Vector3();
 
     //キーの入力を検知し、ベクトルを設定
+    //lGetAxisは-1~1の値を返す
     vector.x = Input.GetAxis("Horizontal");
     vector.z = Input.GetAxis("Vertical");
 
     //高さ方向の判定はキーのzとする
+    //zキーを押している間true
     if(Input.GetKey("z"))
     {
         vector.y=1.0f;
@@ -31,5 +33,5 @@ public class GravtyController : MonoBehaviour
 
 
     Physics.gravity = Gravity * vector.normalized * gravityScale;
-    }
+    }//vector.normalized：ベクトルの長さを1にして方向キー同時押しで重力が強くなることを防止
 }
